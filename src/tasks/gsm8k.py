@@ -1,14 +1,35 @@
 """
 Task class for evaluating the GSM8K (Grade School Math 8K) dataset.
+
+Unsloth Docs: https://docs.unsloth.ai/basics/reasoning-grpo-and-rl/tutorial-train-your-own-reasoning-model-with-grpo
 """
 import pdb
+import re
 from dataclasses import dataclass
 from typing import TypedDict
 
 import asteval
-import transformers
 import numpy as np
 from datasets import DatasetDict, Dataset, load_dataset
+
+SYSTEM_PROMPT = """
+Respond in the following format:
+<reasoning>
+...
+</reasoning>
+<answer>
+...
+</answer>
+"""
+
+XML_COT_FORMAT = """\
+<reasoning>
+{reasoning}
+</reasoning>
+<answer>
+{answer}
+</answer>
+"""
 
 
 @dataclass
@@ -34,22 +55,49 @@ class GSM8kTask:
 
 	def __getsamples__(self, n_samples=10, split="train"):
 		indices = np.random.randint(low=0, high=self.__len__(), size=n_samples)
-		return self.dataset[split].shuffle(seed=42).select(indices)
+		return self.dataset_prompts[split].shuffle(seed=42).select(indices)
 
-	def get_input(self):
-		pass
+	# Unsloth
+	def extract_xml(self, text: str) -> str:
+		answer = text.split("<answer>")[-1]
+		answer = answer.split("</answer>")[0]
+		return answer.strip()
+
+	# Unsloth
+	def extract_hash_answer(self, text: str) -> str | None:
+		if "####" not in text:
+			return None
+		return text.split("####")[1].strip()
+
+	# Unsloth 
+	def get_questions(self, split="train", prompt=SYSTEM_PROMPT) -> Dataset:
+		self.dataset_prompts = self.dataset.map(
+			lambda x: {
+				"prompt": [
+					{"role": "system", "content": prompt},
+					{"role": "user", "content": x["question"]},
+				],
+				"answer": self.extract_hash_answer(x["answer"]),
+			}
+		)
+		return self.dataset_prompts
 
 	def get_output(self):
+		"""Function to extract necessary components from genereated prompts."""
 		pass
 
-	def run_experiment(self):
-		pass 
+	def run_experiment(self, gen_answers):
+		pass
+
+	def to_json(self, experiment):
+		pass
 
 
-def main():
-	gsm8k = GSM8kTask()
-	pdb.set_trace()
+def main(test=False):
+	if test:
+		gsm8k = GSM8kTask()
+		dataset = gsm8k.get_questions()
 
 
 if __name__ == "__main__":
-	main()
+	main(test=False)

@@ -1,4 +1,0 @@
-Abhay: training, reward fn
-Ayesha: paper, ? 
-Maksim: ?
-Matthew: ?
