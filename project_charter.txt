@@ -1,0 +1,19 @@
+PROJECT DESIGN (SMART goals)
+S:Specific — Experiment with fine-tuning a reasoning model with Unsloth using Group Relative Policy Optimization (GRPO), a Reinforcement Learning algorithm for improving the model's reasoning ability.
+M:Measurable — Track progress by evaluating on GSM8k benchmark to assess the mathematical reasoning of models based on accuracy, agreement (step consistency and evaluated expression), and failure rate (llm outputing invalid responses). Other performance/efficiency attributes include the throughput (number of inferences processed per second) and latency (time taken to generate a prediction). 
+A:Achievable — Develop baseline model (preferably 2 models) to assess performance relative to SOTA reasoning models and iteratively store/evaluate results for evaluation. The actual implementation is achievable per Unsloth's API.
+R:Relevant — Fine-tuning language models for [better] reasoning capabilities enables these models to generate consistent and possibly true outputs, and allows for their interpretability. 
+T:Time-bound — The deadline for the project is May 9th (code & report).
+
+AI/ML ENGINEERING PRINCIPLES 
+Frameworks: Unsloth AI
+Infrastructure: Cloud-native
+Constraints: Latency (llm response time), interpretability
+Business Objectives: Experimentation
+Fairness: N/A for reasoning
+
+TEAM COMPOSITION (duties)
+Abhay: model training, reward function design, (paper)
+Ayesha: experiment design, error analysis, (paper) 
+Maksim: pipeline automation, visualizations, (paper)
+Matthew: experiment design/runs, error analysis,  (paper)
