@@ -1,9 +1,24 @@
-PROJECT DESIGN (SMART goals)
+PROJECT DESIGN — SMART goals
+
 S:Specific — Experiment with fine-tuning a reasoning model with Unsloth using Group Relative Policy Optimization (GRPO), a Reinforcement Learning algorithm for improving the model's reasoning ability. Are LLMs genuinely capable of true logical reasoning?
+
 M:Measurable — Track progress by evaluating on GSM8k benchmark to assess the mathematical reasoning of models based on accuracy, agreement (step consistency and evaluated expression), and failure rate (llm outputing invalid responses). Other performance/efficiency attributes include the throughput (number of inferences processed per second) and latency (time taken to generate a prediction). 
+
 A:Achievable — Develop baseline model (preferably 2 models) to assess performance relative to SOTA reasoning models and iteratively store/evaluate results for evaluation. The actual implementation is achievable per Unsloth's API.
+
 R:Relevant — Fine-tuning language models for [better] reasoning capabilities enables these models to generate consistent and possibly true outputs, and allows for their interpretability. 
+
 T:Time-bound — The deadline for the project is May 9th (code & report).
+
+
+TEAM COMPOSITION (duties)
+Abhay: model training, reward function design, (paper)
+Ayesha: experiment design, error analysis, (paper) 
+Maksim: pipeline automation, visualizations, (paper)
+Matthew: experiment design, pertubation test & error analysis,  (paper)
+
+RELATED WORK
+https://arxiv.org/pdf/2410.05229
 
 AI/ML ENGINEERING PRINCIPLES 
 Frameworks: Unsloth AI
@@ -11,15 +26,12 @@ Infrastructure: Cloud-native
 Constraints: Latency (llm response time) & training, interpretability, FPs vs FNs
 Business Objectives: Experimentation
 Fairness: N/A for reasoning
+Model Compression Readiness: 4bit model
 
-TEAM COMPOSITION (duties)
-Abhay: model training, reward function design, (paper)
-Ayesha: experiment design, error analysis, (paper) 
-Maksim: pipeline automation, visualizations, (paper)
-Matthew: experiment design/runs, error analysis,  (paper)
-
-RELATED WORK
-https://arxiv.org/pdf/2410.05229
+1. Core Software Engineering Attributes
+Deployability: Ease of deploying/integration via Hugging Face
+Observability: Analyze system performance automatically with trainer
+Testability: pending
 
 2. ML-Specific Model Attributes
 Interpretability: how well the model's decisions can be understood
@@ -30,6 +42,10 @@ Generalizability: model's performance on unseen, real-world data
 Robustness: ability to handle noisy, incomplete, or adverarial data
 	- Add a single clause (appears relevant) and observe performance to measure reasoning vs. memorization 
 	- Measure sensitivity by changing numbers and names
+
 3. Performance & Efficiency Attributes
+Efficiency: Optimal use of T4 GPU via Google Colab
+Throughput: Number of inferences processed per second (i.e., ...)
+Latency: Time taken for the model to generate a prediction (i.e., ...)
 
 
