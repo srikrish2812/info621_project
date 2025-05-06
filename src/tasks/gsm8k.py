@@ -43,19 +43,22 @@ class GSM8kTask:
 	"""
 	config_name: str = "main"
 
-	def __len__(self):
-		return len(self.dataset['train'])
+	def __len__(self, split="train"):
+		return len(self.dataset[split])
 
 	def __getitem__(self, idx, split="train"):
 		return self.dataset[split][idx]
 
 	def __post_init__(self):
-		self.dataset: DatasetDict[str, Dataset] = load_dataset("openai/gsm8k", self.config_name)
+		self.dataset: DatasetDict[str, Dataset] = load_dataset(
+			"openai/gsm8k",
+			self.config_name,
+			revision="e53f048856ff4f594e959d75785d2c2d37b678ee")
 		self.interpreter = asteval.Interpreter()
 
 	def __getsamples__(self, n_samples=10, split="train"):
-		indices = np.random.randint(low=0, high=self.__len__(), size=n_samples)
-		return self.dataset_prompts[split].shuffle(seed=42).select(indices)
+		indices = np.random.randint(low=0, high=self.__len__(split=split), size=n_samples)
+		return self.dataset_prompts[split].shuffle(seed=42).select(indices),
 
 	# Unsloth
 	def extract_xml(self, text: str) -> str:
@@ -92,6 +95,8 @@ class GSM8kTask:
 	def to_json(self, experiment):
 		pass
 
+	def 
+
 
 def main(test=False):
 	if test:
@@ -101,3 +106,22 @@ def main(test=False):
 
 if __name__ == "__main__":
 	main(test=False)
+
+
+ 
+ 
+ 	
+ 
+ 	
+ 
+ 	
+https://huggingface.co/LLaMAX/LLaMAX2-7B
+https://huggingface.co/LLaMAX/LLaMAX3-8B
+https://huggingface.co/LLaMAX/LLaMAX2-7B-Alpaca
+https://huggingface.co/LLaMAX/LLaMAX2-7B-MetaMath
+https://huggingface.co/LLaMAX/LLaMAX3-8B-Alpaca
+https://huggingface.co/LLaMAX/LLaMAX2-7B-XNLI
+https://huggingface.co/LLaMAX/LLaMAX2-7B-X-CSQA
+https://huggingface.co/vutuka/Llama-3.1-8B-african-aya
+https://huggingface.co/tangledgroup/tangled-llama-33m-32k-base-v0.1
+https://huggingface.co/tangledgroup/tangled-llama-33m-32k-instruct-v0.1
