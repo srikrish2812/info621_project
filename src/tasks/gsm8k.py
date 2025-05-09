@@ -8,7 +8,6 @@ import re
 from dataclasses import dataclass
 from typing import TypedDict
 
-import asteval
 import numpy as np
 from datasets import DatasetDict, Dataset, load_dataset
 
@@ -31,6 +30,12 @@ XML_COT_FORMAT = """\
 </answer>
 """
 
+SYSTEM_PROMPT2 = """
+<start_of_turn>user
+Solve the following math problem step-by-step:
+{question}<end_of_turn>
+<start_of_turn>model
+"""
 
 @dataclass
 class GSM8kTask:
@@ -54,11 +59,11 @@ class GSM8kTask:
 			"openai/gsm8k",
 			self.config_name,
 			revision="e53f048856ff4f594e959d75785d2c2d37b678ee")
-		self.interpreter = asteval.Interpreter()
 
 	def __getsamples__(self, n_samples=10, split="train"):
 		indices = np.random.randint(low=0, high=self.__len__(split=split), size=n_samples)
-		return self.dataset_prompts[split].shuffle(seed=42).select(indices),
+
+		return self.dataset_prompts[split].shuffle(seed=42).select(indices)
 
 	# Unsloth
 	def extract_xml(self, text: str) -> str:
@@ -73,7 +78,7 @@ class GSM8kTask:
 		return text.split("####")[1].strip()
 
 	# Unsloth 
-	def get_questions(self, split="train", prompt=SYSTEM_PROMPT) -> Dataset:
+	def get_questions(self, split="train", prompt=SYSTEM_PROMPT2) -> Dataset:
 		self.dataset_prompts = self.dataset.map(
 			lambda x: {
 				"prompt": [
@@ -85,43 +90,29 @@ class GSM8kTask:
 		)
 		return self.dataset_prompts
 
-	def get_output(self):
-		"""Function to extract necessary components from genereated prompts."""
-		pass
+	def extract_answer(text):
+		"""
+		Extracts the last occurring number (i.e., answer) from a string.
+		"""
+		if not text:
+			return None
 
-	def run_experiment(self, gen_answers):
-		pass
+		text = text.replace(',', '')
+		numbers = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", text)
 
-	def to_json(self, experiment):
-		pass
+		if numbers:
+			return numbers[-1]
 
-	def 
+		return None
 
 
 def main(test=False):
 	if test:
 		gsm8k = GSM8kTask()
 		dataset = gsm8k.get_questions()
+		sample = gsm8k.__getsamples__(n_samples=1, split="test")
+		pdb.set_trace()
 
 
 if __name__ == "__main__":
-	main(test=False)
-
-
- 
- 
- 	
- 
- 	
- 
- 	
-https://huggingface.co/LLaMAX/LLaMAX2-7B
-https://huggingface.co/LLaMAX/LLaMAX3-8B
-https://huggingface.co/LLaMAX/LLaMAX2-7B-Alpaca
-https://huggingface.co/LLaMAX/LLaMAX2-7B-MetaMath
-https://huggingface.co/LLaMAX/LLaMAX3-8B-Alpaca
-https://huggingface.co/LLaMAX/LLaMAX2-7B-XNLI
-https://huggingface.co/LLaMAX/LLaMAX2-7B-X-CSQA
-https://huggingface.co/vutuka/Llama-3.1-8B-african-aya
-https://huggingface.co/tangledgroup/tangled-llama-33m-32k-base-v0.1
-https://huggingface.co/tangledgroup/tangled-llama-33m-32k-instruct-v0.1
+	main(test=True)

@@ -11,19 +11,32 @@ R:Relevant — Fine-tuning language models for [better] reasoning capabilities e
 T:Time-bound — The deadline for the project is May 9th (code & report).
 
 
-TEAM COMPOSITION (duties)
-Abhay: model training, reward function design, (paper)
-Ayesha: experiment design, error analysis, (paper) 
-Maksim: pipeline automation, visualizations, (paper)
-Matthew: experiment design, pertubation test & error analysis,  (paper)
+TEAM COMPOSITION — duties
+
+Abhay Nandiraju: 
+- Code: Conduct baseline, train model with GRPO, design reward functions.
+- Paper:  GRPO math,
+Matthew Hernandez:
+- Code: Latency experiments, repository maintainer, inference notebook.
+- Paper: GSM8K dataset, operational metrics, 
+Ayesha Khatun:
+- Paper: Introduction, related works, experiment results (error analysis)
+Maksim Kulik:
+- Paper: Gemma-3 1B, methodology, discussion and conclusion
 
 RELATED WORK
-https://arxiv.org/pdf/2410.05229
+Perturbation experiment: https://arxiv.org/pdf/2410.05229
+GSM8K: https://arxiv.org/pdf/2110.14168
+
+USEFUL LINKS
+https://symbl.ai/developers/blog/a-guide-to-llm-inference-performance-monitoring/
+https://www.proxet.com/blog/llm-has-a-performance-problem-inherent-to-its-architecture-latency
+
 
 AI/ML ENGINEERING PRINCIPLES 
 Frameworks: Unsloth AI
 Infrastructure: Cloud-native
-Constraints: Latency (llm response time) & training, interpretability, FPs vs FNs
+Constraints: Latency (llm response time) & training time, interpretability, GPU required
 Business Objectives: Experimentation
 Fairness: N/A for reasoning
 Model Compression Readiness: 4bit model
@@ -31,7 +44,7 @@ Model Compression Readiness: 4bit model
 1. Core Software Engineering Attributes
 Deployability: Ease of deploying/integration via Hugging Face
 Observability: Analyze system performance automatically with trainer
-Testability: pending
+Testability: Perturbation experiment
 
 2. ML-Specific Model Attributes
 Interpretability: how well the model's decisions can be understood
@@ -45,7 +58,5 @@ Robustness: ability to handle noisy, incomplete, or adverarial data
 
 3. Performance & Efficiency Attributes
 Efficiency: Optimal use of T4 GPU via Google Colab
-Throughput: Number of inferences processed per second (i.e., ...)
-Latency: Time taken for the model to generate a prediction (i.e., ...)
-
-
+Throughput: Number of inferences processed per second—not necessary, unless business use.
+Latency: Time taken for the model to generate a prediction (i.e., ...)—useful.
