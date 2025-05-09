@@ -59,11 +59,11 @@ class GSM8kTask:
 			"openai/gsm8k",
 			self.config_name,
 			revision="e53f048856ff4f594e959d75785d2c2d37b678ee")
-		self.interpreter = asteval.Interpreter()
 
 	def __getsamples__(self, n_samples=10, split="train"):
 		indices = np.random.randint(low=0, high=self.__len__(split=split), size=n_samples)
-		return self.dataset_prompts[split].shuffle(seed=42).select(indices),
+
+		return self.dataset_prompts[split].shuffle(seed=42).select(indices)
 
 	# Unsloth
 	def extract_xml(self, text: str) -> str:
@@ -110,7 +110,9 @@ def main(test=False):
 	if test:
 		gsm8k = GSM8kTask()
 		dataset = gsm8k.get_questions()
+		sample = gsm8k.__getsamples__(n_samples=1, split="test")
+		pdb.set_trace()
 
 
 if __name__ == "__main__":
-	main(test=False)
+	main(test=True)
