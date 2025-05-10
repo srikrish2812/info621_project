@@ -1,8 +1,9 @@
 # Reinforcement Learning Evokes Reasoning in Small Language Models
+![teaser](pics/methodology.png)
 
-Team Name: Digital Dragons
+**Team Name:** Digital Dragons
 
-Contributors: Abhay Nandiraju, Ayesha Khatun, Maksim Kulik, Matthew Hernandez
+**Contributors:** Abhay Nandiraju, Ayesha Khatun, Maksim Kulik, Matthew Hernandez
 
 > **Note** The scope of this project involves the following points: experiment with fine-tuning a reasoning model with reinforcement learning, track progress by evaluating on GSM8K benchmark, and assess the capability of reasoning in LLMs.
 
@@ -34,7 +35,7 @@ The following code is from the ```src/notebooks/gemma_3_final_inference.ipynb```
 model_output = run_model(sample['prompt'], measure_p=False)
 ```
 And the output would be something like the response below (note the LLM is not deterministic, and may output a incorrect response):
-```Bash
+```
 <bos><bos><start_of_turn>user
 
 <start_of_turn>user
