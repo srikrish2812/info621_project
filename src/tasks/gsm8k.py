@@ -90,7 +90,7 @@ class GSM8kTask:
 		)
 		return self.dataset_prompts
 
-	def extract_answer(text):
+	def extract_answer(self, text):
 		"""
 		Extracts the last occurring number (i.e., answer) from a string.
 		"""
