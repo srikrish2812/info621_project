@@ -13,7 +13,9 @@ This project explores the application of reinforcement learning (RL) for enhanci
 	│── logs/
 	│   ├── baseline/            # Logs for baseline model
 	│   └── model_reasoning/     # Logs for model with reasoning
-	│── pics/		     # PNG files for repository
+	│── pics/				 	 # PNG files for repository
+	│── pretrained_results/		 # .csv file for the predictions of pretrained model
+	│── finetuned_results/		 # .csv file for the predictions of finetuned model 
 	│── src/
 	│   ├── config/              # Configuration for models
 	│   ├── notebooks/           # Code for experiments and exploratory data analysis
