@@ -20,7 +20,7 @@ Matthew Hernandez:
 - Code: Latency experiments, repository maintainer, inference notebook.
 - Paper: GSM8K dataset, operational metrics, 
 Ayesha Khatun:
-- Code: Data Preprocessing for error Analysis, Plot Generation
+- Code: Data Preprocessing, test with pre-trained gpt-4o-mini, falcon-rw-1b, Plot Generation
 - Paper: Abstract, Introduction, related works, experiment results (error analysis)
 Maksim Kulik:
 - Paper: Gemma-3 1B, methodology, discussion and conclusion
