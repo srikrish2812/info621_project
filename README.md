@@ -10,33 +10,33 @@ This project explores the application of reinforcement learning (RL) for enhanci
 
 ## Project Structure
 ```bash
+	│── experiments/	     		# Experiments for quantitative analysis
 	│── logs/
-	│   ├── baseline/            # Logs for baseline model
-	│   └── model_reasoning/     # Logs for model with reasoning
-	│── pics/				 	 # PNG files for repository
-	│── pretrained_results/		 # .csv file for the predictions of pretrained model
-	│── finetuned_results/		 # .csv file for the predictions of finetuned model 
+	│   ├── pretrained_results/     	# .csv file for the predictions of pretrained model
+	│   └── finetuned_results/     		# .csv file for the predictions of finetuned model
+ 	│── notebooks/
+	│   ├── exploratory/         		# Error analysis
+	│   └── reproducibility/    		# Code for replication of experiments	
+	│── pics/				# PNG files for repository
 	│── src/
-	│   ├── config/              # Configuration for models
-	│   ├── notebooks/           # Code for experiments and exploratory data analysis
-	│   └── tasks/               # Helper task for modular coding
-	│── tests/                   # Unit & integration tests
-	│── README.md                # Project overview and setup instructions
-	│── project_charter.txt      # Short document stating project details
-	│── requirements.txt         # Requirements for project
-
+	│   └── tasks/               		# Helper task for modular coding
+	│── tests/                   		# Unit & integration tests
+	│── INFO 621 Final Project.pdf  	# Project report
+	│── README.md                		# Project overview and setup instructions
+	│── project_charter.txt      		# Short document stating project details
+	│── requirements.txt         		# Requirements for project (unused)
 ```
 
 ## Prequisites & Setup
 The code must be run with a GPU only because of Unsloth's requirements, and we recommend using Google Colab to run the inference notebook to a preselected sample from the dataset.
 
 To run inference on Google Colab, follow the steps below:
-1. Go to the ```src/notebooks/gemma_3_final_inference.ipynb``` notebook [here](https://github.com/srikrish2812/info621_project/blob/main/src/notebooks/gemma_3_final_inference.ipynb) and click "Open in Colab".
+1. Go to the ```notebooks/reproducibility/gemma_3_final_inference.ipynb``` notebook [here](https://github.com/srikrish2812/info621_project/blob/main/notebooks/reproducibility/gemma_3_final_inference.ipynb) and click "Open in Colab".
 2. Click the Connect / Reconnect T4 button. T4 is a free GPU that is provided by Google. Compute units are finite but sufficient to run our example.
 3. Click the play buttom until the end of the section header ```Inference``` where the stdout prints out "Code demonstration finished!" to conclude the setup.
 
 ## Quick Start
-The following code is from the ```src/notebooks/gemma_3_final_inference.ipynb``` notebook and runs inference on a preselected example:
+The following code is from the ```notebooks/reproducibility/gemma_3_final_inference.ipynb``` notebook and runs inference on a preselected example:
 
 ```Python
 model_output = run_model(sample['prompt'], measure_p=False)
