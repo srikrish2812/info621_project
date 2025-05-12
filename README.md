@@ -31,12 +31,12 @@ This project explores the application of reinforcement learning (RL) for enhanci
 The code must be run with a GPU only because of Unsloth's requirements, and we recommend using Google Colab to run the inference notebook to a preselected sample from the dataset.
 
 To run inference on Google Colab, follow the steps below:
-1. Go to the ```src/notebooks/gemma_3_final_inference.ipynb``` notebook [here](https://github.com/srikrish2812/info621_project/blob/main/src/notebooks/gemma_3_final_inference.ipynb) and click "Open in Colab".
+1. Go to the ```notebooks/reproducibility/gemma_3_final_inference.ipynb``` notebook [here](https://github.com/srikrish2812/info621_project/blob/main/notebooks/reproducibility/gemma_3_final_inference.ipynb) and click "Open in Colab".
 2. Click the Connect / Reconnect T4 button. T4 is a free GPU that is provided by Google. Compute units are finite but sufficient to run our example.
 3. Click the play buttom until the end of the section header ```Inference``` where the stdout prints out "Code demonstration finished!" to conclude the setup.
 
 ## Quick Start
-The following code is from the ```src/notebooks/gemma_3_final_inference.ipynb``` notebook and runs inference on a preselected example:
+The following code is from the ```notebooks/reproducibility/gemma_3_final_inference.ipynb``` notebook and runs inference on a preselected example:
 
 ```Python
 model_output = run_model(sample['prompt'], measure_p=False)
