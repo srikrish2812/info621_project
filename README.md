@@ -66,6 +66,8 @@ Thus, Natalia sold 72 clips altogether in April and May.
 
 Final Answer: The final answer is $\boxed{72}$<end_of_turn>
 ```
+## Error Analysis
+![teaser](pics/human.png)
 ## Acknowledgements
 We thank [Unsloth](https://docs.unsloth.ai/) for making it easy to train the Gemma-3 1B model on the Google Colab platform. Their boilerplate [code](https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Gemma3_(1B)-GRPO.ipynb) was modified for our custom model. Lastly, the citations for the model and datasets are provided below:
 ```
