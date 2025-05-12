@@ -14,16 +14,16 @@ T:Time-bound — The deadline for the project is May 9th (code & report).
 TEAM COMPOSITION — duties
 
 Abhay Nandiraju: 
-- Code: Conduct baseline, train model with GRPO, design reward functions.
-- Paper:  GRPO math,
+- Code: Gemma-3-1b fine-tuning with GRPO, Pretrained Model and Fine-tuned Model accuracy evaluation, Reward Function Definition.
+- Paper:  GRPO and Reward function sections.
 Matthew Hernandez:
-- Code: Latency experiments, repository maintainer, inference notebook.
-- Paper: GSM8K dataset, operational metrics, 
+- Code: Latency experimentation, Repository maintainer, Inference Notebook Design.
+- Paper: GSM8K dataset, and Operational Analysis/Metrics in paper. 
 Ayesha Khatun:
-- Code: Data Preprocessing, test with pre-trained gpt-4o-mini, falcon-rw-1b, Plot Generation
-- Paper: Abstract, Introduction, related works, experiment results (error analysis)
+- Code: Data Preprocessing, Testing with GPT-4o-mini, falcon-rw-1b and Plot Generation.
+- Paper: Plot Generation, Abstract, Introduction, Error Analysis.
 Maksim Kulik:
-- Paper: Gemma-3 1B, methodology, discussion and conclusion
+- Paper: Detailed Analysis of Gemma-3-1B, Methodology, Discussion, Conclusion and Future Work, Quantitative Analysis, Team Manager.
 
 RELATED WORK
 Perturbation experiment: https://arxiv.org/pdf/2410.05229
